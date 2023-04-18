@@ -37,10 +37,12 @@ To create visualisations for each of the categories and their emotion distributi
 To be able to reproduce and run this code, make sure to have Bash and Python3 installed on whichever device it will be run on. Please be aware, that the published script was made and run on a MacBook Pro from 2017 with the MacOS Ventura package, and that all Python code was run successfully on version 3.11.1.
 
 The repository will need to be cloned to your device. Before running the code, please make sure that your Bash terminal is running from the repository; After, please run the following from the command line to install and update necessary packages:
+
   bash setup.sh
 
 ### Running the script
 My system requires me to type “python3” in the beginning of my commands, and the following is therefor based on this. To run the script from the command line please be aware of your specific system, and whether it is necessary to type “python3”, “python”, or something else in front of the commands. Now run:
+
 	python3 src/emotion_clf.py
 
 This will active the script. When running, it will go through each of the functions in the order written in my main function. That is:
@@ -52,4 +54,5 @@ This will active the script. When running, it will go through each of the functi
 
 ## Results
 From both the tables and bar charts I am able to see some key differences in the distribution of emotions across the real and fake headlines. Across all headlines the most dominating emotion is “Neutral”, which can both be observed from the bar chart as well as its actual count in the table. As it is assumed that the given emotions label for each headline is the correct one, this could be interpreted as the model assigning this emotion to headlines not fitting to any of the other emotions in the model. 
+
 The other most noticeable difference is that the fake news headlines has higher numbers in 4 of the seven categories, and is almost equal in another one. It could be seen as if the fake headlines have been made with the aim of trying to invoke emotions, whereas the real headlines more often try to remain neutral in their wording. 
