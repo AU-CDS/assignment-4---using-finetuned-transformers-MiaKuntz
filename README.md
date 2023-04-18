@@ -40,10 +40,11 @@ The repository will need to be cloned to your device. Before running the code, p
 
   bash setup.sh
 
+
 ### Running the script
 My system requires me to type “python3” in the beginning of my commands, and the following is therefor based on this. To run the script from the command line please be aware of your specific system, and whether it is necessary to type “python3”, “python”, or something else in front of the commands. Now run:
 
-	python3 src/emotion_clf.py
+  python3 src/emotion_clf.py
 
 This will active the script. When running, it will go through each of the functions in the order written in my main function. That is:
 
