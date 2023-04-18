@@ -38,13 +38,13 @@ To be able to reproduce and run this code, make sure to have Bash and Python3 in
 
 The repository will need to be cloned to your device. Before running the code, please make sure that your Bash terminal is running from the repository; After, please run the following from the command line to install and update necessary packages:
 
-  bash setup.sh
+    bash setup.sh
 
 
 ### Running the script
 My system requires me to type “python3” in the beginning of my commands, and the following is therefor based on this. To run the script from the command line please be aware of your specific system, and whether it is necessary to type “python3”, “python”, or something else in front of the commands. Now run:
 
-  python3 src/emotion_clf.py
+    python3 src/emotion_clf.py
 
 This will active the script. When running, it will go through each of the functions in the order written in my main function. That is:
 
