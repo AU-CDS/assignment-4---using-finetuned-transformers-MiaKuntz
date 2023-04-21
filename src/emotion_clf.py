@@ -64,17 +64,17 @@ def main():
     # plotting histogram for all headlines
     plot_emotions(all_emotions)
     plt.title("Distribution of emotions for all headlines")
-    plt.savefig(f"models/all_headlines_bars.png")
+    plt.savefig("models/all_headlines_bars.png")
     plt.clf() # clearing figure
     # plotting histogram for real headlines
     plot_emotions(real_emotions)
     plt.title("Distribution of emotions for real headlines")
-    plt.savefig(f"models/real_headlines_bars.png")
+    plt.savefig("models/real_headlines_bars.png")
     plt.clf() # clearing figure
     # plotting histogram for fake headlines
     plot_emotions(fake_emotions)
     plt.title("Distribution of emotions for fake headlines")
-    plt.savefig(f"models/fake_headlines_bars.png")
+    plt.savefig("models/fake_headlines_bars.png")
 
 if __name__=="__main__":
     main()
