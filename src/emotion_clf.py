@@ -1,25 +1,34 @@
+# Author: Mia Kuntz
+# Date hand-in: 31/5 - 2023
+
+# Description: This script classifies the headlines in the fake_or_real_news.csv file.
+# The script creates histograms for the distribution of emotions across all headlines, real headlines, and fake headlines. 
+# The histograms are saved in the models folder. 
+# The script also saves crosstab tables for the distribution of emotions across all headlines, real headlines, and fake headlines in the out folder.
+
 # importing pipeline
 from transformers import pipeline
-# data processing tools
+# importing operating system
 import os
+# importing pandas
 import pandas as pd
 # importing plotting tool
 import matplotlib.pyplot as plt
 
-# defining function for classifying data
+# defining function for processing data
 def clf_data(): 
-    # creating filepath
+    # defining path to data file
     data_file = os.path.join("in/fake_or_real_news.csv")
-    # reading in news data
+    # reading data file
     news_df = pd.read_csv(data_file)
-    # choosing only "title" column
+    # selecting only the headlines
     headlines = news_df["title"]
-    # using the model emotion english for text classification pipeline
+    # defining pipeline for emotion classification
     classifier = pipeline("text-classification", 
                         model="j-hartmann/emotion-english-distilroberta-base", 
                         # getting the top score for each headline
                         return_all_scores=False)
-    # classifying all headlines
+    # classifying emotions for each headline
     emotions = [result["label"] for result in classifier(headlines.tolist())]
     # creating pandas series for emotion distribution across all headlines
     all_emotions = pd.Series(emotions, index=news_df.index, name="Emotion")
@@ -31,12 +40,13 @@ def clf_data():
     fake_emotions = all_emotions.loc[fake_mask].reset_index(drop=True).rename("Emotion")
     return all_emotions, real_emotions, fake_emotions
 
+# defining function for plotting emotions
 def plot_emotions(input_emotions):
-# plot for headline emotion distribution
-    # creating dictionary
+    # creating dictionary for counting instances of each emotion
     emotions_dict = {"anger": 0, "disgust": 0, "fear": 0, "joy": 0, "neutral": 0, "sadness": 0, "surprise": 0}
-    # counting instances across headline categories
+    # counting instances of each emotion
     for emotion in input_emotions:
+        # adding 1 to the value of the emotion key
         emotions_dict[emotion] += 1
     # setting values variable
     values = list(emotions_dict.values())
@@ -51,7 +61,7 @@ def plot_emotions(input_emotions):
 
 # defining main function
 def main():
-    # processing
+    # processing data
     all_emotions, real_emotions, fake_emotions = clf_data()
     # creating crosstab tables for each emotions distribution
     all_headlines_table = pd.crosstab(index=all_emotions, columns="Count")
@@ -78,3 +88,6 @@ def main():
 
 if __name__=="__main__":
     main()
+
+# Command line argument:
+# python3 emotion_clf.py
